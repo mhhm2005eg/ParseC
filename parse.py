@@ -19,7 +19,7 @@ stdout_str, stderr_str = proc.communicate()
 Lines = stdout_str.splitlines(True)
 for line in Lines:
     #Col=line.split("   ")
-    Col = re.split(" +", line)
+    Col = re.split("  +", line)
     
     print(Col)
     for x in Col:
