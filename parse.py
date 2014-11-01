@@ -14,7 +14,7 @@ if len(sys.argv) == 1:
     file = "Callout.c"
 else :
     file = sys.argv[1]
-    
+N = 0    
 #print(sys.argv)
 def List2Str(List, Seprator):
     returnStr=""
@@ -32,7 +32,7 @@ def Interprate(TypeAndName):
         print("parse error")
     elif len(x) == 1:
         returnDic["type"] = "void"
-        returnDic["name"] = "TypeAndName"
+        returnDic["name"] = TypeAndName
     elif len(x) ==2:
         returnDic["type"] = x[0]
         returnDic["name"] = x[1]
@@ -48,12 +48,13 @@ def Interprate(TypeAndName):
     return    returnDic
     
     return(returnStr)
+
 def GetTest(file):
-    Build_Command = "indent -kr " +file
+    Build_Command = "indent -kr --line-lengthn200 -npsl  --no-tabs " +file
     proc=subprocess.Popen(Build_Command, shell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout_str, stderr_str = proc.communicate()
 
-    Build_Command = "ctags.exe  -x --fields=+S " +file
+    Build_Command = "ctags.exe  -x  --fields=+S " +file
     proc=subprocess.Popen(Build_Command, shell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout_str, stderr_str = proc.communicate()
 
@@ -63,7 +64,9 @@ def GetTest(file):
         #Col=line.split("   ")
         Col = re.split("  +", line)
         if Col[1] == "function":
-            
+            global N
+            N = N +1
+            print(N)
             Col[3] =Col[3].replace("extern","")
             Col[3] =Col[3].replace("static","")
             x =re.split("[(,)]", Col[3] )
@@ -126,7 +129,7 @@ def GetTest(file):
             #print(x)
     if not stderr_str:
         #print(stdout_str)
-        print(file+ " Done !!! \n")
+        print(file+ " Done !!! "+str(N)+" \n")
         print("*"*30)
         
 def main():
