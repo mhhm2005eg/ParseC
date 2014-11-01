@@ -76,14 +76,7 @@ def GetTest(file):
             RetType = "void"
             #print(Func, 1)
             #print(line)
-            if len(xx) == 1:
-                FuncName = Func
-            elif len(xx) == 2:
-                RetType = xx[0]
-                FuncName  = xx[1]
-            else:
-                print("Parsing error !!! ")
-                
+               
             RetType = FuncDic["type"]
             FuncName  = FuncDic["name"]
             #print(RetType,FuncName)
@@ -106,7 +99,8 @@ def GetTest(file):
                     ReturnList.append(Arg.strip())
                     yy = Arg.split()
                     ##print(yy)
-                    Var.append(yy[-1].strip())
+                    Dic=Interprate(Arg)
+                    Var.append(Dic["name"].strip())
             #print(List2Str(Var,","), 3)
             if Var:
                 P = List2Str(Var,",")
@@ -115,7 +109,7 @@ def GetTest(file):
             if RetType:
                 FunCall = "Ret"+FuncName+"="+FuncName+"("+P +")"
             else:
-                FunCall = FuncName+"("+List2Str(Var,",") +")"
+                FunCall = FuncName+"("+P +")"
                 
             ReturnList.append(FunCall) 
             #print(ReturnList)    
