@@ -1,10 +1,14 @@
 struct h {
-int x};
-int func1(int s, char y)
+int x} h;
+int func1(h s, char y)
 {
 }
 
 int func2(int s, char y)
+{
+}
+
+int func2(int s)
 {
 }
 

@@ -22,11 +22,16 @@ for line in Lines:
     Col = re.split("  +", line)
     if Col[1] == "function":
         x =re.split("[(,)]", Col[3] )
+        del x[-1]
         print(x)
-    print(Col)
-    for x in Col:
-        print(x)
+        NoP = len(x)-1
+        if (NoP == 1) and (x[1] == "void" or (not x[1])):
+            NoP = 0
+        print(NoP)
+    #print(Col)
+    #for x in Col:
+        #print(x)
 if not stderr_str:
-    print(stdout_str)
+    #print(stdout_str)
     print("Done !!! \n")
     print("*"*30)
