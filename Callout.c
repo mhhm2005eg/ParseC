@@ -12,6 +12,14 @@ int func2(int s)
 {
 }
 
+int func3(void)
+{
+}
+
+void func4(void)
+{
+}
+
 /********************************************************************************/
 /* COMPONENT: Linker test														*/
 /* MODULNAME: Callout															*/
