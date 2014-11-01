@@ -20,7 +20,9 @@ Lines = stdout_str.splitlines(True)
 for line in Lines:
     #Col=line.split("   ")
     Col = re.split("  +", line)
-    
+    if Col[1] == "function":
+        x =re.split("[(,)]", Col[3] )
+        print(x)
     print(Col)
     for x in Col:
         print(x)
