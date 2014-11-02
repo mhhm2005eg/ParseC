@@ -50,7 +50,7 @@ def Interprate(TypeAndName):
     return(returnStr)
 
 def GetTest(file):
-    Build_Command = "indent -kr --line-lengthn200 -npsl  --no-tabs " +file
+    Build_Command = "indent -kr --line-length200 -npsl  --no-tabs " +file
     proc=subprocess.Popen(Build_Command, shell=False,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout_str, stderr_str = proc.communicate()
 
