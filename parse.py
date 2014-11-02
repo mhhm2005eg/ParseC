@@ -62,14 +62,16 @@ def GetTest(file):
     for line in Lines:
         Var = []
         #Col=line.split("   ")
-        Col = re.split("  +", line)
+        Col = re.split(" +", line)
         if Col[1] == "function":
             global N
             N = N +1
             print(N)
-            Col[3] =Col[3].replace("extern","")
-            Col[3] =Col[3].replace("static","")
-            x =re.split("[(,)]", Col[3] )
+            FunPT= Col[4:]
+            strFunPT=List2Str(FunPT, " ")
+            strFunPT =strFunPT.replace("extern","")
+            strFunPT =strFunPT.replace("static","")
+            x =re.split("[(,)]", strFunPT )
             del x[-1]
             Args = x[:]
             Func = x[0]
